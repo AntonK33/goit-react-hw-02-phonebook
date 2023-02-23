@@ -1,5 +1,17 @@
-export const App = () => {
-  return (
+import { Component } from "react";
+import InputForm from "./InputForm/InputForm";
+
+
+
+
+export class App extends Component {
+state = {
+  contacts: [],
+  name: ''
+}
+
+  render() {
+   return (
     <div
       style={{
         height: '100vh',
@@ -9,8 +21,11 @@ export const App = () => {
         fontSize: 40,
         color: '#010101'
       }}
-    >
-      React homework template
+     >
+       <InputForm />
+     
     </div>
   );
-};
+}
+  
+}
