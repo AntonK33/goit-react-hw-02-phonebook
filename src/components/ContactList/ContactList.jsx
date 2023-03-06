@@ -1,40 +1,31 @@
-import { Component } from 'react';
+//import { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
+import { List } from './List';
 
-class ContactList extends Component {
-    render() {
-        return (
-            <>
-                <h2 className={css.contacts_h}>Contacts</h2>
-                <ul className={css.filter_list}>
-                    {this.props.filteredContacts.map(contact => {
-                        return (
-                            <li key={contact.id} className={css.filter_item}>
-                                <p className={css.filter_p}>{contact.name}: {contact.number}</p>
-                                <button
-                                    onClick={() => this.props.deleteContact(contact.id)}
-                                    className={css.deleteContactBtn}
-                                >Delete
-                                </button>
-                            </li>
-                        )
-                    })}
-                </ul>
-
-            </>
-
-        )
-
-    }
-}
-
-
-
-
+const ContactList = ({ filteredContacts, deleteContact }) => {
+  return (
+    <>
+      <h2 className={css.contacts_h}>Contacts</h2>
+      <ul className={css.filter_list}>
+        {filteredContacts.map(contact => {
+          return (
+            <List
+              key={contact.id}
+              id={contact.id}
+              name={contact.name}
+              number={contact.number}
+              deleteContact={deleteContact}
+            />
+          );
+        })}
+      </ul>
+    </>
+  );
+};
 
 ContactList.propTypes = {
-  deleteItem: PropTypes.func.isRequired,
   filteredContacts: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.string.isRequired,

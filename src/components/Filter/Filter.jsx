@@ -7,7 +7,6 @@ const Filter = props => {
                     <span className={css.filter_span}>Find contacts by name:</span>
                     <input
                     onChange={props.onInputHandler}
-                    //value={this.state.filter}
                     type="text"
                     name="filter"  
                     className={css.input_filter}
@@ -15,7 +14,6 @@ const Filter = props => {
                 </label>
     )
 }
-
 
 Filter.propTypes = {
   onInputHandler: PropTypes.func.isRequired,
